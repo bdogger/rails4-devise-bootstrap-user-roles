@@ -1,0 +1,18 @@
+<h2>Users</h2>
+
+<table class="table table-striped" id="users-table">
+    <thead>
+    <tr>
+        <th>Email</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @users.each do |user| %>
+        <tr id="user-row-<%= user.id %>">
+            <td><%= user.email %></td>
+            <td><%= link_to 'View', administer_user_path(user), class: 'btn btn-primary' %></td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>

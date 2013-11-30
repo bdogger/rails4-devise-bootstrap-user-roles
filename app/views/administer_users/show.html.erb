@@ -1,0 +1,16 @@
+<h1><%= @user.email %></h1>
+<%= form_for @user, url: "#{administer_users_path}/#{@user.id}" do |f| %>
+    <h3>Roles</h3>
+    <dl>
+        <% @roles.each do |role| %>
+            <dt>
+                <%= check_box_tag 'user[role_ids][]', role.id, @user.has_role?(role.name), id: dom_id(role) %>
+                <%= label_tag dom_id(role), role.name %>
+            </dt>
+            <dd>
+                <%= role.description %>
+            </dd>
+        <% end %>
+    </dl>
+    <%= f.submit class: 'btn btn-primary' %>
+<% end %>
